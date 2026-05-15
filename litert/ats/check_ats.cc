@@ -62,6 +62,7 @@ Expected<AtsConf> NpuInferenceOptions() {
 Expected<AtsConf> CpuInferenceOptions() {
   absl::FlagSaver saver;
   absl::SetFlag(&FLAGS_backend, "cpu");
+  absl::SetFlag(&FLAGS_cpu_hint_fully_delegated, false);
   return AtsConf::ParseFlagsAndDoSetup();
 }
 
