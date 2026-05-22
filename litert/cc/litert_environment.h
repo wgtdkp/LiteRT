@@ -93,7 +93,6 @@ class Environment {
         kLiteRtEnvOptionTagCompilerCacheMaxConfigsPerModel,
      CompilerCacheMaxTotalSize = kLiteRtEnvOptionTagCompilerCacheMaxTotalSize,
     WebGpuInstance = kLiteRtEnvOptionTagWebGpuInstance,
-    WebGpuProcs = kLiteRtEnvOptionTagWebGpuProcs,
     RuntimeLibraryDir = kLiteRtEnvOptionTagRuntimeLibraryDir,
     AutoRegisterAccelerators = kLiteRtEnvOptionTagAutoRegisterAccelerators,
   };
@@ -189,8 +188,8 @@ class Environment {
   /// @brief Returns whether the environment supports FP16.
   bool SupportsFP16() const {
     bool is_supported = false;
-    if (auto status = runtime_->EnvironmentSupportsFP16(handle_.get(),
-                                                        &is_supported);
+    if (auto status =
+            runtime_->EnvironmentSupportsFP16(handle_.get(), &is_supported);
         status != kLiteRtStatusOk) {
       return false;
     }
