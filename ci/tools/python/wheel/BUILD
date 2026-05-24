@@ -164,11 +164,16 @@ PACKAGE_DATA = select({
     "//litert:linux_x86_64": [
         "//litert/tools:apply_plugin_main",
         "//litert/vendors/google_tensor/compiler:google_tensor_compiler_plugin_so",
+        "//litert/vendors/hailo/dispatch:dispatch_api_so",
         "//litert/vendors/intel_openvino/compiler:intel_openvino_compiler_plugin_so",
         "//litert/vendors/intel_openvino/dispatch:dispatch_api_so",
         "//litert/vendors/mediatek/compiler:compiler_plugin_so",
         "//litert/vendors/qualcomm/compiler:qnn_compiler_plugin_so",
         "//litert/vendors/samsung/compiler:compiler_plugin_so",
+    ],
+    "//litert:linux_aarch64": [
+        "//litert/vendors/hailo/compiler:hailo_compiler_plugin_so",
+        "//litert/vendors/hailo/dispatch:dispatch_api_so",
     ],
     "//litert:windows": [
         "//litert/tools:apply_plugin_main",

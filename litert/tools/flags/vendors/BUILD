@@ -313,3 +313,19 @@ cc_library(
     ],
     alwayslink = 1,
 )
+
+# HAILO ########################################################################
+
+cc_library(
+    name = "hailo_flags",
+    srcs = ["hailo_flags.cc"],
+    hdrs = ["hailo_flags.h"],
+    copts = [
+        "-DINCLUDE_HAILO_COMPILE_FLAGS",
+    ],
+    deps = [
+        "//litert/cc:litert_expected",
+        "@com_google_absl//absl/flags:flag",
+    ],
+    alwayslink = 1,
+)

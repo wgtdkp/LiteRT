@@ -17,6 +17,7 @@
 #define INCLUDE_INTEL_OPENVINO_COMPILE_FLAGS
 #define INCLUDE_GOOGLE_TENSOR_COMPILE_FLAGS
 #define INCLUDE_SAMSUNG_COMPILE_FLAGS
+#define INCLUDE_HAILO_COMPILE_FLAGS
 
 #include <memory>
 #include <string>
@@ -34,6 +35,7 @@
 #include "litert/tools/flags/apply_plugin_flags.h"
 #include "litert/tools/flags/common_flags.h"
 #include "litert/tools/flags/flag_types.h"
+#include "litert/tools/flags/vendors/hailo_flags.h"  // IWYU pragma: keep
 #include "litert/tools/flags/vendors/intel_openvino_flags.h"  // IWYU pragma: keep
 #include "litert/tools/outstream.h"
 
@@ -161,6 +163,14 @@ int main(int argc, char* argv[]) {
       run->dump_out, "Samsung", [&] { return opts->GetSamsungOptions(); },
       litert::samsung::UpdateSamsungOptionsFromFlags,
       "Failed to parse Samsung flags, Error: ");
+
+  // Hailo: propagate --hailo_hef_path to LITERT_HAILO_HEF_PATH so the
+  // compiler plugin can locate the pre-compiled HEF file.
+  if (auto status = litert::hailo::UpdateHailoFromFlags(); !status) {
+    run->dump_out.Get().get()
+        << "Failed to apply Hailo flags, Error: "
+        << status.Error().Message() << "\n";
+  }
 #endif  // !defined(LITERT_WINDOWS_OS)
 
   ParseOptionsFlags(

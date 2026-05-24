@@ -148,6 +148,7 @@ litert_bin(
             "//litert/tools/flags/vendors:mediatek_flags_with_dynamic_runtime",
             "//litert/tools/flags/vendors:qualcomm_flags_with_dynamic_runtime",
             "//litert/tools/flags/vendors:samsung_flags_with_dynamic_runtime",
+            "//litert/tools/flags/vendors:hailo_flags",
         ],
     }),
 )
