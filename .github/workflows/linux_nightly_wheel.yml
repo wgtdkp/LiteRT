@@ -19,7 +19,7 @@ concurrency:
 jobs:
   build_wheels:
     name: "Build Wheels - Python ${{ matrix.python-version }}"
-    runs-on: linux-x86-n2-16
+    runs-on: ubuntu-22.04
     container:
       image: us-docker.pkg.dev/ml-oss-artifacts-published/ml-public-container/ml-build:latest
     strategy:
